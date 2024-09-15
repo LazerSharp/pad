@@ -7,7 +7,13 @@
 #include <ctype.h>
 #include <stdio.h>
 
+
 /*** data ***/
+
+/*** defines ***/
+
+#define CTRL_KEY(k) ((k) & 0x1f)
+
 
 struct termios orig_termios;
 
@@ -22,7 +28,6 @@ void disableRawMode() {
 		die("tcsetattr");
 	} 
 }
-
 void enableRawMode() {
 	if (tcgetattr(STDIN_FILENO, &orig_termios) == -1) {
 		die("tcgetattr");
@@ -56,7 +61,7 @@ int main() {
 			printf("%d (%c)\r\n",c,c);
 		}
 
- 		if (c == 'q') {
+ 		if (c == CTRL_KEY('c')) {
 			break;
 		} 	
 	}
