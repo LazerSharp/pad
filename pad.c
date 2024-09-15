@@ -60,8 +60,7 @@ int main() {
 		} else {
 			printf("%d (%c)\r\n",c,c);
 		}
-
- 		if (c == CTRL_KEY('c')) {
+		if (c == CTRL_KEY('c')) {
 			break;
 		} 	
 	}
